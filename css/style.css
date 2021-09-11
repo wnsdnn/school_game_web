@@ -13,21 +13,26 @@ body{overflow-x: hidden;}
 .icons .icon p{font-weight: bold; color: rgb(104, 104, 255);}
 .icons .icon img{object-fit: cover; width: 100%; border-radius: 10px;}
 
-
 .icons .icon:hover{transform: scale(0.92); transition: .3s;}
-
-
 
 
 .popup{position: fixed; justify-content: center; align-items: center; top: 0; left: 0; bottom: 0; right: 0; background: rgba(0, 0, 0, .8);}
 .popup article{background: #fff; width: 400px; height: 700px; flex-direction: column; align-items: center; position: relative; border-radius: 30px; padding: 30px;}
-.popup .close_btn{position: absolute; width: 40px; line-height: 40px; font-size: 22px; color: #fff; border: none; border-radius: 100%; right: -17.5px; top: -17.5px; cursor: pointer;}
+.popup .close_btn{position: absolute; width: 50px; line-height: 50px; font-size: 23px; color: #fff; border: none; border-radius: 100%; right: -17.5px; top: -17.5px; cursor: pointer; transition: .3s;}
 
-.popup .title{font-size: 38px; margin: 10px 0;}
-.popup .icon{object-fit: cover; width: 230px; margin: 18px 0; border-radius: 10px;}
-.popup .text{width: 260px; font-size: 26px; margin: 15px 0; text-align: center;}
-.popup .qr{object-fit: cover; width: 105px; margin-top: 20px;}
-.popup .play{object-fit: cover; width: 125px; margin: 13px 0;}
+.popup .close_btn:hover{transition: .3s; transform: scale(0.9); font-size: 22px;}
+
+.popup .title{font-size: 35px; margin: 7px 0; text-align: center; transition: .3s;}
+.popup .title:hover{transform: scale(1.06); transition: .3s;}
+.popup .icon{object-fit: cover; width: 220px; margin: 15px 0 10px 0; border-radius: 10px;}
+.popup .text{width: 260px;  height: 140px !important; font-size: 21px; margin: 10px 0; text-align: center;
+    overflow: hidden; white-space: normal; text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+.popup .qr{object-fit: cover; width: 105px;}
+.popup .play{object-fit: cover; width: 125px; margin: 10px 0;}
 
 
 .footer{width: 100%; height: 300px;}

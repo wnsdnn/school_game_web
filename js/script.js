@@ -17,35 +17,55 @@ const createIcon = () => {
 
 window.onload = () => {
     createIcon();
-
+    
     const icon = document.querySelectorAll(".container .icons .icon");
-
+    const body = document.querySelector('body');
+    let scrollPosition = 0;
+    
     icon.forEach((ele)=>{
-        ele.addEventListener("click", function({target}) {
+        ele.addEventListener("click", function() {
+            
+            scrollPosition = window.pageYOffset;
+            body.style.overflow = 'hidden'
+            body.style.position = 'fixed';
+            body.style.top = `-${scrollPosition}px`;
+            
             const targetId = this.id;
             const data = gameData.filter( ele=> ele.title === targetId );
-
+            
             const popup = document.createElement("section");
             popup.classList.add('popup');
             popup.classList.add('flex');
-
+            
             popup.innerHTML = `
-                <article class="flex">
-                    <button class="close_btn" style="background: ${data[0].color};">x</button>
-                    <h2 class="title">${data[0].title}</h2>
-                    <img src="${data[0].img_path}" alt="iconImg" class="icon">
-                    <p class="text">${data[0].content}</p>
-                    <img src="${data[0].qr_path}" alt="iconQR" class="qr">
-                    <img src="./img/playstore.png" alt="playstore" class="play">
-                </article>
+            <article class="flex">
+            <button class="close_btn" style="background: ${data[0].color};">x</button>
+            <h2 class="title">
+                <a href="${data[0].download_path}" target="blank" style="color: ${data[0].color};">${data[0].title}</a>
+            </h2>
+            <img src="${data[0].img_path}" alt="iconImg" class="icon">
+            <p class="text">${data[0].content}</p>
+            <img src="${data[0].qr_path}" alt="iconQR" class="qr">
+            <img src="./img/playstore.png" alt="playstore" class="play">
+            </article>
             `;
             document.body.append(popup);
-            // console.log(data[0]);
+
+            const closeBtn = document.querySelector(".popup .close_btn");
+        
+            closeBtn.addEventListener("click", function() {
+                document.querySelector(".popup").remove();
+                body.style.removeProperty('overflow');
+                body.style.removeProperty('position');
+                body.style.removeProperty('top');
+                window.scrollTo(0, scrollPosition);
+            })
         })
     })
-    
-    console.log(icon);
 };
+
+
+
 
 
 {/* <section class="popup flex">
